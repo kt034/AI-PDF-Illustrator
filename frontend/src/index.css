@@ -1,0 +1,193 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0f0f13;
+  color: #e8e8f0;
+  min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #1a1a24;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.app-header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; }
+
+.upload-btn {
+  cursor: pointer;
+  background: #6c63ff;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.upload-btn:hover { background: #574fd6; }
+
+/* Layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+/* PDF Section */
+.pdf-section {
+  display: flex;
+  flex-direction: column;
+  background: #15151e;
+  overflow-y: auto;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  gap: 1rem;
+}
+
+.pdf-canvas-wrap canvas {
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  max-width: 100%;
+}
+
+/* Page controls */
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-controls button {
+  background: #2a2a3a;
+  color: #e8e8f0;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.page-controls button:disabled { opacity: 0.3; cursor: default; }
+.page-controls button:not(:disabled):hover { background: #3a3a4e; }
+.page-controls span { font-size: 0.9rem; color: #9999bb; }
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: #1a1a24;
+  border-left: 1px solid #2a2a3a;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.2rem 1.2rem 0.8rem;
+  border-bottom: 1px solid #2a2a3a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.sidebar-header h3 { font-size: 1rem; font-weight: 600; }
+
+.gen-btn {
+  background: linear-gradient(135deg, #6c63ff, #a855f7);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.gen-btn:disabled { opacity: 0.5; cursor: default; }
+.gen-btn:not(:disabled):hover { opacity: 0.85; }
+
+.sidebar-body {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gen-image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Skeleton loader */
+.skeleton-wrap { display: flex; flex-direction: column; gap: 0.8rem; align-items: center; }
+.skeleton {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #1e1e2e 25%, #2a2a3e 50%, #1e1e2e 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+.hint { font-size: 0.8rem; color: #6666aa; }
+
+/* Prompt detail */
+.prompt-detail summary {
+  font-size: 0.78rem;
+  color: #8888bb;
+  cursor: pointer;
+  user-select: none;
+}
+.prompt-detail p {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: #9999cc;
+  line-height: 1.5;
+}
+
+/* Error */
+.error-box {
+  background: #2a1a1a;
+  border: 1px solid #6b2020;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  color: #ff8888;
+}
+
+/* Placeholder */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 100%;
+  text-align: center;
+  color: #6666aa;
+}
+.placeholder span { font-size: 3rem; }
+.placeholder p { font-size: 0.88rem; line-height: 1.5; max-width: 240px; }
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
+  gap: 1rem;
+  text-align: center;
+  color: #6666aa;
+}
+.empty-icon { font-size: 5rem; }
+.empty-state h2 { color: #c0c0e0; }
+.empty-state p { font-size: 0.9rem; }
